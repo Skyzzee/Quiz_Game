@@ -1,118 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nom de l'exercice
-{% endblock %}
+{% block title %}Nom de l'exercice{% endblock %}
 
 {% block body %}
-<<<<<<< HEAD
-	<div class="nav_top d-flex justify-content-between gap-3 px-4">
-		<a href="#" class="nav_icon nav_title-name2">
-			<span class="nav_title-name">Quiz</span>Game</a>
-
-		<div class="d-flex form-inputs">
-			<input class="form-control" type="text" placeholder="Search">
-			<i class="bx bx-search"></i>
-		</div>
-
-		<div class="d-flex gap-4">
-			<div class="separator"></div>
-
-			<div class="icons">
-				<div class="circle"></div>
-				<a class="text-dark" href="#">
-					<i class="bx bx-bell"></i>
-				</a>
-			</div>
-
-			<div class="separator"></div>
-
-			<div class="d-flex gap-4">
-				<h3 class="align-self-center mt-2">John D.</h3>
-				<img class="avatar_image" src="images/profile.jpg" alt="John Doe">
-			</div>
-		</div>
-	</div>
-
-	<main
-		class="mt-4">
-		<!--Container Main start-->
-		<div class="pb-5">
-			<div class="mx-4 my-4">
-
-				<div class="bg w-100 p-5 text-white ">
-					<div class="">
-						<h1>Bonjour John D.</h1>
-					</div>
-					<div class=" info">
-						<div class="mx-5">
-							<h3>14</h3>
-							<p>Thèmes</p>
-						</div>
-						<div class="mx-5">
-							<h3>23</h3>
-							<p>Exercices</p>
-						</div>
-						<div class="mx-5">
-							<h3>465</h3>
-							<p>Questions</p>
-						</div>
-					</div>
-					<div></div>
-				</div>
-			</div>
-
-			<div class="mx-4 selector">
-				<nav class="navbar navbar-expand-lg navbar-white ">
-					<div class="collapse navbar-collapse afficher " id="navbarNav">
-						<ul class="navbar-nav ">
-							<div class="svg-wrapper ">
-								<svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
-									<rect id="shape" height="40" width="150"/>
-									<div id="text">
-										<a href="{{ path('app_main_quiz') }}">
-											<span class="spot"></span>Ajout d'un quizz</a>
-									</div>
-								</svg>
-							</div>
-							<div class="svg-wrapper2 ">
-								<svg height="40" width="250" xmlns="http://www.w3.org/2000/svg">
-									<rect id="shape2" height="40" width="250"/>
-									<div id="text">
-										<a href="{{ path('app_category_index') }}">
-											<span class="spot"></span>Afficher tous les thèmes</a>
-									</div>
-								</svg>
-							</div>
-							<div class="svg-wrapper2 ">
-								<svg height="40" width="250" xmlns="http://www.w3.org/2000/svg">
-									<rect id="shape2" height="40" width="250"/>
-									<div id="text">
-										<a href="{{ path('app_exercise_index') }}">
-											<span class="spot"></span>Afficher tous les
-																																																																																															Exercices</a>
-									</div>
-								</svg>
-							</div>
-							<li class="nav-item dropdown navbar-nav navbardrop">
-								<select class="navbardrop  btn nav-link" id='navbarDropdown'>
-									<option value='1' class='volunteer'>Difficulté</option>
-									<li>
-										<hr href="#" class="dropdown-divider">
-									</li>
-									<option value='2' class='volunteer1'>Débutant</option>
-									<li>
-										<hr class="dropdown-divider">
-									</li>
-									<option value='3' class='volunteer2'>Intermédiaire</option>
-									<li>
-										<hr class="dropdown-divider">
-									</li>
-									<option value='4' class='volunteer3'>Expert</option>
-								</select>
-
-							</li>
-						</ul>
-=======
 
 <main class="mt-4">
 		<!--Container Main start-->
@@ -148,25 +38,17 @@
 					<nav class="navbar navbar-expand-lg navbar-white ">		
 						  <div class="collapse navbar-collapse afficher " id="navbarNav">
 							<ul class="navbar-nav ">
-								<div class="svg-wrapper ">
-									<svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
-									  <rect id="shape" height="40" width="150" />
-									  <div id="text">
-										<a href="{{ path('app_main_quiz') }}"><span class="spot"></span>Ajout d'un quizz</a>
-									  </div>
-									</svg>
-								  </div>
-								  <div class="svg-wrapper2 ">
-									<svg height="40" width="250" xmlns="http://www.w3.org/2000/svg">
-									  <rect id="shape2" height="40" width="250" />
+								 <div class="svg-wrapper2 ">
+									<svg height="60" width="160" xmlns="http://www.w3.org/2000/svg">
+									  <rect id="shape2" height="60" width="160" />
 									  <div id="text">
 										<a href="{{ path('app_category_index') }}"><span class="spot"></span>Afficher tous les thèmes</a>
 									  </div>
 									</svg>
 								  </div>
 								  <div class="svg-wrapper2 ">
-									<svg height="40" width="250" xmlns="http://www.w3.org/2000/svg">
-									  <rect id="shape2" height="40" width="250" />
+									<svg height="60" width="160" xmlns="http://www.w3.org/2000/svg">
+									  <rect id="shape2" height="60" width="160" />
 									  <div id="text">
 										<a href="{{ path('app_exercise_index') }}"><span class="spot"></span>Afficher tous les Exercices</a>
 									  </div>
@@ -183,65 +65,9 @@
 				<th>Categorie</th>
 				<th>Difficulté</th>
 				<th>Nbr de question</th>
->>>>>>> d5157955c6267706f00d9e1afe57ca383b275b47
-
-					</div>
-				</nav>
-			</div>
-
-		</div>
-	</div>
-	<section class="d-flex">
 
 
-		<div class="mx-4 box-left">
-			<div class="img-exo"></div>
-			<div class="example-wrappe ">
-
-				<h1 class="p-5 text-center">Exercices</h1>
-				<div class="m-5">
-					<table class="table">
-						<thead class="bg-table">
-
-							<tr>
-
-								<th>Titre</th>
-								<th>Categorie</th>
-								<th>Difficulté</th>
-								<th>Questions</th>
-								<th>Outils</th>
-							</tr>
-						</thead>
-						<tbody>
-							{% for exercise in exercises %}
-								<tr>
-									<td>{{ exercise.title }}</td>
-									<td>{{ exercise.category.name }}</td>
-									<td>{{ exercise.difficulty.name }}</td>
-									<td>{{ exercise.question|length }}</td>
-									<td>
-										<a href="{{ path('app_exercise_edit', {'id': exercise.id}) }}">Modifier</a>
-									</td>
-								</tr>
-							</table>
-						</tbody>
-					</div>
-				</tbody>
 			</tr>
-		{% else %}
-			<tr>
-				<td colspan="3">Pas de résultats</td>
-			</tr>
-<<<<<<< HEAD
-		{% endfor %}
-	</tbody>
-
-</div>
-<a href="{{ path('app_exercise_new') }}" class="btn m-5">Ajouter un nouveau</a>
-<a href="{{ path('app_exercise_index') }}" class="btn m-5">Retour à la création de quiz</a>
-</div>
-<div class="box-right mx-4 d-flex">
-=======
 		</thead>
 			<tbody>
 				{% for exercise in exercises %}
@@ -268,14 +94,3 @@
 	<a href="{{ path('app_exercise_new') }}" class="btn btn-primary">Ajouter un exercice</a>	
 	<a href="{{ path('app_main_quiz') }}" class="btn btn-primary">Retour à la création de quiz</a>
 	{% endblock %}
-		
-
-			
->>>>>>> d5157955c6267706f00d9e1afe57ca383b275b47
-
-<h3 class="m-3">Exercice récent</h3>
-<a href="#" class="btn-view p-4">Voir plus ></a>
-</div>
-</section>
-</main>
-{% endblock %}

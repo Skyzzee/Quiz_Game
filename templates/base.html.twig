@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-<!-- Importation de sa propre bibiliothèque CSS -->
+	<!-- Importation de sa propre bibiliothèque CSS -->
 		<link rel="stylesheet" href="css/style.css">
 
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" defer></script>
@@ -45,10 +45,14 @@
 
 							<a href="{{ path('app_main_base') }}" class="nav_link"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
 							<a href="#" class="nav_link"> <i class='bx bx-play-circle nav_icon'></i> <span class="nav_name">Quiz</span> </a> 
-							<a href="#" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Stats</span> </a> 
-						</div>
-						
-					</div> 
+							<a href="{{ path('app_result_index') }}" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Stats</span> </a> 
+						</div>		
+				</div> 
+					<div class="nav_admin_only">
+							<a href="{{ path('app_admin_index') }}" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Admin</span> </a> 
+							<a href="{{ path('app_main_quiz') }}" class="nav_link"> <i class='bx bxs-file-plus nav_icon'></i> <span class="nav_name">Ajouter quizz</span> </a> 
+					</div>
+					
 					
 				    <div class="nav_list">
                         {% if not app.user %}
@@ -92,11 +96,11 @@
                     {% if app.user %}
                             <h5>{{ app.user.firstname }}</h5>
                     {% else %}
-                            <p>Visiteur venue d'ailleurs </p>
+                            <p>Visiteur venu d'ailleurs </p>
                             
                     {% endif %}
                 </div>
-					<img class="avatar_image" src="../assets/images/profile.jpg" alt="404">
+					
 				</div>
 			</div>
 		</div>

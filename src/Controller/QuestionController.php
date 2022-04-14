@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Question;
 use App\Entity\Media;
 use App\Repository\ExerciseRepository;
 use Doctrine\ORM\EntityManagerInterface;

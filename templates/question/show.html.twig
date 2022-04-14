@@ -69,34 +69,26 @@
 		<thead>
 			<tr>
 				<th>Id</th>
-				<th>Titre</th>
-				<th>Categorie</th>
-				<th>Difficulté</th>
-				<th>Nbr de question</th>
-
+				<th>Question</th>
+                <th>Illustration</th>
+				<th>Rép 1</th>
+                <th>Rép 2</th>
+                <th>Rép 3</th>
+                <th>Rép 4</th>
+                <th>Rép 5</th>
+                <th>Rép 6</th>
+                <th>Expications</th>
 
 			</tr>
 		</thead>
 			<tbody>
-				{% for exercise in exercises %}
+				{% for question in questions %}
 					<tr>
-						<td>{{ exercise.id }}</td>
-						<td>{{ exercise.title }}</td>
-						<td>{{ exercise.category.name }}</td>
-						<td>{{ exercise.difficulty.name }}</td>
-						<td>
-							{{ exercise.question | length }} 
-							<a href="{{ path('question_show', {'id': exercise.id}) }}">Voir</a>
-						</td>
-						
+						<td>{{ question.id }}</td>
+						<td>{{ question.title }}</td>
 
-		
-						<td>
-							<a href="{{ path('app_exercise_edit', {'id': exercise.id}) }}">Modifier</a>
-						</td>
-						<td>
-							<a href="{{ path('question_maker', {'id': exercise.id}) }}">Ajouter une question</a>
-						</td>
+                        <td><img src="{{ media.content }}" alt="img" style="max-height: 50px;"></td>
+
 					</tr>
 				{% else %}
 					<tr>
@@ -105,10 +97,6 @@
 				{% endfor %}
 			</tbody>
 		</table>
-	<a href="{{ path('app_exercise_new') }}" class="btn btn-primary">Ajouter un exercice</a>	
+		
 	<a href="{{ path('app_main_quiz') }}" class="btn btn-primary">Retour à la création de quiz</a>
 	{% endblock %}
-		
-
-			
-

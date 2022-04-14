@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="c1">
+        <h3>Exercice :</h3>
+        <h3>"Athletes en herbes"</h3>       <!-- nom de l'exo -->
+    </div>
+
+
+    <div class="c2">
+        <p>Question 1</p>                   <!-- num de l'exo -->
+        <p>Temps restant: 50s</p>           <!-- timer -->
+    </div>
+
+
+
+    <div class="c3">
+        <div class="c3-1">
+            <h1>Qui est Usain Bolt ?</h1>   <!-- question -->
+        </div>
+
+        <div class="c3-2">
+            <div class="couleur1">
+                <input type="checkbox">
+                <label>Un Athlete</label>   <!-- reponse 1 -->
+            </div>
+            <div class="couleur2">
+                <input type="checkbox">
+                <label>Un Chanteur</label>  <!-- reponse 2-->
+            </div>
+        </div>
+
+    </div>
+
+    <div class="c4">
+        <span>Répondre</span>   <!-- passer à la question suivante -->
+    </div>                      <!-- c'est pas un bouton donc c horrible mais balek -->
+
+    
+    <!-- CSS PAS OUF MAIS TEMPORAIRE -->
+    <style>
+        .c1{
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .c2{
+            display: flex;
+            justify-content: space-between;
+            margin: 50px 200px 10px 200px;
+        }
+
+        .c3{
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .c3-1{
+            margin-bottom: 20px;
+        }
+
+        .c3-2{
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 500px 10px 500px;
+        }
+
+        .couleur1{
+            background-color: rosybrown;
+            padding: 10px 20px;
+        }
+        .couleur2{
+            background-color: orange;  
+            padding: 10px 20px;
+        }
+
+        .c4{
+            text-align: center;
+            margin-top: 60px;
+        }
+        .c4 span{
+            border: 2px black solid;
+            padding: 10px;
+        }
+    </style>
+{% endblock %}

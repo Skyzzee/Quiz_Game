@@ -127,5 +127,13 @@ class MainController extends AbstractController
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
 
+/* ------------------------------------------------ Route MAIN (Faux lancement d'un quizz) ----------------------------------------------*/
+
+    #[Route(path: '/play', name: 'play')]
+    public function play()
+    {
+        return $this->render('play.html.twig');
+    }
+
 }
 

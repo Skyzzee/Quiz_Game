@@ -35,7 +35,7 @@ class MainController extends AbstractController
     }
 
 /* ---------------------------------------------------- Route MAIN (Création de quiz) --------------------------------------------------*/
-    #[IsGranted('ROLE_ADMIN')]
+    #[IsGranted('ROLE_FORMATEUR')]
     #[Route('/quiz', name: 'quiz')]
     public function quiz(): Response
     {

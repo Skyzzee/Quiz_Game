@@ -12,7 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /* ---------------------------------------------------- Route EXERCISE (Principal) ---------------------------------------------------------*/
-#[IsGranted('ROLE_ADMIN')]
+#[IsGranted('ROLE_FORMATEUR')]
 #[Route('/exercise', name: 'app_exercise_')]
 class ExerciseController extends AbstractController
 {
@@ -46,16 +46,6 @@ class ExerciseController extends AbstractController
         return $this->renderForm('exercise/new.html.twig', [
             'exercise' => $exercise,
             'form' => $form,
-        ]);
-    }
-
-/* --------------------------------------------------- Route EXERCISE (Voir exercice) ------------------------------------------------------*/
-
-    #[Route('/{id}', name: 'show', methods: ['GET'])]
-    public function show(Exercise $exercise): Response
-    {
-        return $this->render('exercise/show.html.twig', [
-            'exercise' => $exercise,
         ]);
     }
 

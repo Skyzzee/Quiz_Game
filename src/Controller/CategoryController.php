@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
 /* ----------------------------------------------------- Route CATEGORY (Principal) --------------------------------------------------------*/
-#[IsGranted('ROLE_ADMIN')]
+#[IsGranted('ROLE_FORMATEUR')]
 #[Route('/category', name: 'app_category_')]
 class CategoryController extends AbstractController
 {
@@ -45,16 +45,6 @@ class CategoryController extends AbstractController
         return $this->renderForm('category/new.html.twig', [
             'category' => $category,
             'form' => $form,
-        ]);
-    }
-
-/* --------------------------------------------------- Route CATEGORY (Voir catégorie) -----------------------------------------------------*/
- 
-    #[Route('/{id}', name: 'show', methods: ['GET'])]
-    public function show(Category $category): Response
-    {
-        return $this->render('category/show.html.twig', [
-            'category' => $category,
         ]);
     }
 

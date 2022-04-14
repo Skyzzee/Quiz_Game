@@ -5,15 +5,16 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
 /* ------------------------------------------------- Route ADMIN (Principal) ACCES ADMIN ------------------------------------------------*/
 
-#[IsGranted('ROLE_ADMIN')]
+#[IsGranted('ROLE_FORMATEUR')]
 #[Route('/admin', name: 'app_admin_')]
 class AdminController extends AbstractController
 {
@@ -45,16 +46,6 @@ class AdminController extends AbstractController
         return $this->renderForm('admin/new.html.twig', [
             'user' => $user,
             'form' => $form,
-        ]);
-    }
-
-/* --------------------------------------------------- Route ADMIN (Voir utilisateur) ---------------------------------------------------*/
-
-    #[Route('/{id}', name: 'show', methods: ['GET'])]
-    public function show(User $user): Response
-    {
-        return $this->render('admin/show.html.twig', [
-            'user' => $user,
         ]);
     }
 

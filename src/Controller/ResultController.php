@@ -12,7 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /* ------------------------------------------------------- Route RESULT (Principal) ------------------------------------------------------*/
-#[IsGranted('ROLE_ADMIN')]
+#[IsGranted('ROLE_FORMATEUR')]
 #[Route('/result', name: 'app_result_')]
 class ResultController extends AbstractController
 {

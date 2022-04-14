@@ -12,7 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /* --------------------------------------------------- Route DIFFICULTY (Principal)  ---------------------------------------------------------*/
-#[IsGranted('ROLE_ADMIN')]
+#[IsGranted('ROLE_FORMATEUR')]
 #[Route('/difficulty', name: 'app_difficulty_')]
 class DifficultyController extends AbstractController
 {
@@ -44,16 +44,6 @@ class DifficultyController extends AbstractController
         return $this->renderForm('difficulty/new.html.twig', [
             'difficulty' => $difficulty,
             'form' => $form,
-        ]);
-    }
-
-/* --------------------------------------------------- Route DIFFICULTY (Voir difficulté) ----------------------------------------------------*/
-
-    #[Route('/{id}', name: 'show', methods: ['GET'])]
-    public function show(Difficulty $difficulty): Response
-    {
-        return $this->render('difficulty/show.html.twig', [
-            'difficulty' => $difficulty,
         ]);
     }
 

@@ -19,7 +19,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/question', name: 'question_')]
 class QuestionController extends AbstractController
 {
-    #[IsGranted('ROLE_ADMIN')]
+    #[IsGranted('ROLE_FORMATEUR')]
     #[Route('/maker', name: 'maker')]
     public function questionMaker(Request $request, EntityManagerInterface $manager): Response
     {

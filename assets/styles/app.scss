@@ -246,10 +246,18 @@ main{
 }
 
 .selector{
-	box-shadow: 1px 3px 35px;
+	box-shadow: 1px 3px 20px;
 	border: 3px solid var(--color-gray700);
 	border-radius: 10px;
 	height: 10vh;
+}
+
+.adminselector{
+	box-shadow: 1px 3px 20px;
+	border: 3px solid var(--color-gray700);
+	border-radius: 10px;
+    
+	
 }
 
 /********************************************************/
@@ -331,24 +339,13 @@ main{
       fill. Multiple svg-wrapper classes can be put side by side.
   */
   
-  .svg-wrapper {
-    margin-top: 0;
-    position: relative;
-    width: 180px;
-    /*make sure to use same height/width as in the html*/
-    height: 40px;
-    display: inline-block;
-    border-radius: 3px;
-    margin-left: 60px;
-    margin-right: 5px
-  }
   .svg-wrapper2 {
     margin-top: 0;
     position: relative;
-    width: 280px;
+    width: 160px;
     /*make sure to use same height/width as in the html*/
     display: inline-block;
-    margin-left: 89px;
+    margin-left: 95px;
     margin-right: 5px
   }
   /*
@@ -358,22 +355,14 @@ main{
     under the words. Here's also where the transition speed is set.
   */
   
-  #shape {
-    stroke-width: 6px;
-    fill: transparent;
-    stroke: var(--color-purple);
-    stroke-dasharray: 85 400;
-    stroke-dashoffset: -202;
-    transition: 1.5s all ease;
-    
-  }
+
 
   #shape2 {
     stroke-width: 6px;
     fill: transparent;
     stroke: var(--color-purple);
-    stroke-dasharray: 90 400;
-    stroke-dashoffset: -370;
+    stroke-dasharray: 80 400;
+    stroke-dashoffset: 220;
     transition: 2s all ease;
   }
   /* 
@@ -382,8 +371,9 @@ main{
   */
   
   #text {
-    margin-top: -35px;
+    margin-top: -55px;
     text-align: center;
+    
   }
   
   #text a {
@@ -402,12 +392,7 @@ main{
   make it thinner, then set it to again wrap around the entire parent element.
   */
   
-  .svg-wrapper:hover #shape {
-    stroke-dasharray: 50 0;
-    stroke-width: 5px;
-    stroke-dashoffset: 0;
-    stroke: var(--color-purple);
-  }
+  
   .svg-wrapper2:hover #shape2 {
     stroke-dasharray: 50 0;
     stroke-width: 5px;

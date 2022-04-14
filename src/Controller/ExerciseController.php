@@ -49,6 +49,16 @@ class ExerciseController extends AbstractController
         ]);
     }
 
+/* --------------------------------------------------- Route EXERCISE (Voir exercice) ------------------------------------------------------*/
+
+#[Route('/{id}', name: 'show', methods: ['GET'])]
+public function show(Exercise $exercise): Response
+{
+    return $this->render('exercise/show.html.twig', [
+        'exercise' => $exercise,
+    ]);
+}
+
 /* ------------------------------------------------ Route EXERCISE (Modifiaction exercice) -------------------------------------------------*/
 
     #[Route('/{id}/edit', name: 'edit', methods: ['GET', 'POST'])]

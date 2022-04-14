@@ -16,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+#[IsGranted('ROLE_FORMATEUR')]
 #[Route('/question', name: 'question_')]
 class QuestionController extends AbstractController
 {

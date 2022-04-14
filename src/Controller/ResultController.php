@@ -12,13 +12,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /* ------------------------------------------------------- Route RESULT (Principal) ------------------------------------------------------*/
-#[IsGranted('ROLE_FORMATEUR')]
+
 #[Route('/result', name: 'app_result_')]
 class ResultController extends AbstractController
 {
 
 /* ---------------------------------------------------------- Route RESULT (Home) --------------------------------------------------------*/
-
+#[IsGranted('ROLE_APPRENANT')]
     #[Route('/', name: 'index', methods: ['GET'])]
     public function index(ResultRepository $resultRepository): Response
     {
@@ -76,7 +76,7 @@ class ResultController extends AbstractController
     }
 
 /* ------------------------------------------------- Route RESULT (Création résultat) ---------------------------------------------------*/
-
+    #[IsGranted('ROLE_FORMATEUR')]
     #[Route('/new', name: 'new', methods: ['GET', 'POST'])]
     public function new(Request $request, ResultRepository $resultRepository): Response
     {
@@ -99,7 +99,7 @@ class ResultController extends AbstractController
     }
 
 /* --------------------------------------------------- Route RESULT (Voir résultat) ------------------------------------------------------*/
-
+    #[IsGranted('ROLE_FORMATEUR')]
     #[Route('/{id}', name: 'show', methods: ['GET'])]
     public function show(Result $result): Response
     {
@@ -109,7 +109,7 @@ class ResultController extends AbstractController
     }
 
 /* ------------------------------------------------ Route RESULT (Modifiaction résultat) -------------------------------------------------*/
-
+    #[IsGranted('ROLE_FORMATEUR')]
     #[Route('/{id}/edit', name: 'edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Result $result, ResultRepository $resultRepository): Response
     {
@@ -129,7 +129,7 @@ class ResultController extends AbstractController
     }
 
 /* ------------------------------------------------ Route RESULT (Suppression résultat) --------------------------------------------------*/
-
+    #[IsGranted('ROLE_FORMATEUR')]
     #[Route('/{id}', name: 'delete', methods: ['POST'])]
     public function delete(Request $request, Result $result, ResultRepository $resultRepository): Response
     {

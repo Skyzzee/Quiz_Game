@@ -13,13 +13,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
 /* ----------------------------------------------------- Route CATEGORY (Principal) --------------------------------------------------------*/
-#[IsGranted('ROLE_FORMATEUR')]
+
 #[Route('/category', name: 'app_category_')]
 class CategoryController extends AbstractController
 {
 
 /* ---------------------------------------------------------- Route CATEGORY (Home) --------------------------------------------------------*/
-
+    #[IsGranted('ROLE_APPRENANT')]
     #[Route('/', name: 'index', methods: ['GET'])]
     public function index(CategoryRepository $categoryRepository): Response
     {
@@ -29,7 +29,7 @@ class CategoryController extends AbstractController
     }
 
 /* ------------------------------------------------- Route CATEGORY (Création catégorie) ---------------------------------------------------*/
-
+    #[IsGranted('ROLE_FORMATEUR')]
     #[Route('/new', name: 'new', methods: ['GET', 'POST'])]
     public function new(Request $request, CategoryRepository $categoryRepository): Response
     {
@@ -49,7 +49,7 @@ class CategoryController extends AbstractController
     }
 
 /* ------------------------------------------------ Route CATEGORY (Modifiaction catégorie) ------------------------------------------------*/
-
+    #[IsGranted('ROLE_FORMATEUR')]
     #[Route('/{id}/edit', name: 'edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Category $category, CategoryRepository $categoryRepository): Response
     {
@@ -68,7 +68,7 @@ class CategoryController extends AbstractController
     }
 
 /* ------------------------------------------------ Route CATEGORY (Suppression catégorie) -------------------------------------------------*/
-
+    #[IsGranted('ROLE_FORMATEUR')]
     #[Route('/{id}', name: 'delete', methods: ['POST'])]
     public function delete(Request $request, Category $category, CategoryRepository $categoryRepository): Response
     {

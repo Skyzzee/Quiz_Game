@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {# TEMPORAIRE bootswatch lux theme #} 
     <link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.css">
+    <!-- Importation des bibliothèques externes -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<!-- Importation de sa propre bibiliothèque CSS -->
+		<link rel="stylesheet" href="css/style.css">
+
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" defer></script>
+		<script type="text/javascript" src="./js/script.js" defer></script>
+
 
     <title>QuizGame - {% block title %}{% endblock %}</title>
 
@@ -20,47 +31,75 @@
 
 </head>
 
-    {# HEADER #}
-    <header>
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <div class="container-fluid">
+   <!-- Haut de page -->
+		<header class="header" id="header">
+			
+			<div class="l-navbar" id="nav-bar">
+				
+				<nav class="nav">
+					<div>
+						<div class="nav_list"> 
+							<div class="header_toggle"> 
+								<a class="nav_logo" id="header-toggle"> <i class='bx bx-menu nav_icon'></i></a>
+							</div>
 
-            <a class="navbar-brand ms-2 me-4" href="{{ path('app_main_base') }}">Quiz Game</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+							<a href="{{ path('app_main_base') }}" class="nav_link"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
+							<a href="#" class="nav_link"> <i class='bx bx-play-circle nav_icon'></i> <span class="nav_name">Quiz</span> </a> 
+							<a href="#" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Stats</span> </a> 
+						</div>
+						
+					</div> 
+					
+				    <div class="nav_list">
+                        {% if not app.user %}
+                            <li class="nav-item inscriptionbutton">
+                                <a href="{{ path('app_main_register') }}" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">S'inscrire</span> </a>
+                            </li> 
+                            <li class="nav-item">
+                                <a href="{{ path('app_main_login') }}" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Connexion</span> </a>
+                            </li> 
+                        {% else %}
+                            <li class="nav-item">
+                                <a href="{{ path('app_main_logout') }}" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Déconnexion</span> </a>
+                            </li> 
+                        {% endif %} 
+                    </div>
+				</nav>
+			</div>	
+			
+		</header>
+		
+		<div class="nav_top d-flex justify-content-between gap-3 px-4">
+			<a href="{{ path('app_main_base') }}" class="nav_icon nav_title-name2"><span class="nav_title-name">Quiz</span>Game</a>
 
+			<div class="d-flex form-inputs"> 
+				<input class="form-control" type="text" placeholder="Search"> 
+				<i class="bx bx-search"></i> 
+			</div>
+			
+			<div class="d-flex gap-4">
+				<div class="separator"></div>
+	
+				<div class="icons">
+					<div class="circle"></div>
+					<a class="text-dark" href="#"><i class="bx bx-bell"></i></a>
+				</div>
+	
+				<div class="separator"></div>
 
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-
-            {# Menu de Gauche #}
-            <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_main_quiz') }}">Créer un quiz</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa-solid fa-lg fa-envelope pe-2"></i>Les Règles de Quiz Game</a>
-                </li>
-                {% if not app.user %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_main_register') }}"><i class="fa-solid fa-lg fa-file-circle-plus pe-2"></i>S'inscrire</a>
-                    </li> 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_main_login') }}"><i class="fa-solid fa-lg fa-file-circle-plus pe-2"></i>Connexion</a>
-                    </li> 
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_main_logout') }}"><i class="fa-solid fa-lg fa-file-circle-plus pe-2"></i>Déconnexion</a>
-                    </li> 
-                {% endif %} 
-                {% if is_granted('ROLE_ADMIN') %} 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_admin_index') }}"><i class="fa-solid fa-lg fa-file-circle-plus pe-2"></i>Administration</a>
-                    </li>
-                {% endif %}
-            </ul>
-        </div>
-    </header>
+				<div class="d-flex gap-4">
+					<div class="example-wrapper">
+                    {% if app.user %}
+                            <h5>{{ app.user.firstname }}</h5>
+                    {% else %}
+                            <p>Visiteur venue d'ailleurs </p>
+                            
+                    {% endif %}
+                </div>
+					<img class="avatar_image" src="../assets/images/profile.jpg" alt="404">
+				</div>
+			</div>
+		</div>
 
 <body class="d-flex flex-column h-100">
 
@@ -72,12 +111,7 @@
 
     </main>        
 
-    {# FOOTER #}
-    <footer class="footer mt-auto py-2 bg-dark">
-      <div class="container">
-        <span class="text-muted"> &copy; QuizGame 2022 </span>
-      </div>
-    </footer>
+   
 
 </body>
 

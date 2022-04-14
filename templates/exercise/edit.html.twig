@@ -3,66 +3,8 @@
 {% block title %}Modifier Exercice{% endblock %}
 
 {% block body %}
-    
-    <main class="mt-4">
-		<!--Container Main start-->
-		<div class="pb-5">
-			<div class="mx-4 my-4">
-
-				<div class="bg w-100 p-5 text-white ">
-					<div class="">
-						  <h1 class="text-white">Modifier l' Exercice</h1>
-					</div>
-				<div class="info">
-							<div class="mx-5">
-								<h3 class="text-white">14</h3>
-								<p>Thèmes</p>
-							</div>
-							<div class="mx-5">
-								<h3 class="text-white">23</h3>
-								<p>Exercices</p>
-							</div>
-							<div class="mx-5">
-								<h3 class="text-white">465</h3>
-								<p>Questions</p>
-						</div>
-					</div>
-					<div>
-
-					</div>
-				</div>
-			</div>
-
-
-            <div class="mx-4 selector">
-					<nav class="navbar navbar-expand-lg navbar-white ">		
-						  <div class="collapse navbar-collapse afficher " id="navbarNav">
-							<ul class="navbar-nav ">
-								<div class="svg-wrapper ">
-									<svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
-									  <rect id="shape" height="40" width="150" />
-									  <div id="text">
-										<a href="{{ path('app_main_quiz') }}"><span class="spot"></span>Ajout d'un quizz</a>
-									  </div>
-									</svg>
-								  </div>
-								  <div class="svg-wrapper2 ">
-									<svg height="40" width="250" xmlns="http://www.w3.org/2000/svg">
-									  <rect id="shape2" height="40" width="250" />
-									  <div id="text">
-										<a href="{{ path('app_category_index') }}"><span class="spot"></span>Afficher tous les thèmes</a>
-									  </div>
-									</svg>
-								  </div>
-								  <div class="svg-wrapper2 ">
-									<svg height="40" width="250" xmlns="http://www.w3.org/2000/svg">
-									  <rect id="shape2" height="40" width="250" />
-									  <div id="text">
-										<a href="{{ path('app_exercise_index') }}"><span class="spot"></span>Afficher tous les Exercices</a>
-									  </div>
-									</svg>
-								  </div>
-  </main>
+<div class="mx-5 adminselector p-2 my-5">
+   
 
     {{ include('exercise/_form.html.twig', {'button_label': 'Modifier l\'exercice'}) }}
 
@@ -71,4 +13,5 @@
 
 
     {{ include('exercise/_delete_form.html.twig') }}
+</div>
 {% endblock %}

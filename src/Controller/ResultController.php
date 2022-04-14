@@ -54,24 +54,27 @@ class ResultController extends AbstractController
         };
 
     //---------------------------------------------------------------------
-        
+
         // Foreach pour aller récupérer toutes les notes pour calculer la moyenne de classe
         foreach($resultRepository->findAll() as $resultEntity) {
             $average[]=$resultEntity->getGrades();
         }
         // Varaible pour calculer le total des moyennes (moyenne de classe)
         //dd(getAverage($average));
+        $moyenneClasse = getAverage($average);
 
     //---------------------------------------------------------------------
         
         // Variable pour calculer la moyenne des apprenants (par ID)
-        $ApprenantMoyenne = $resultRepository->findAllinUser(1);
+        $ApprenantMoyenne = $resultRepository->findAllinUser($this->getUser()->getId());
         // Calcul de la moyenne des apprenants
         //dd(getAverageById($ApprenantMoyenne));
-
+        $moyenneEleve = getAverageById($ApprenantMoyenne);
 
         return $this->render('result/index.html.twig', [
             'results' => $resultRepository->findAll(),
+            'moyenne_Eleve' => $moyenneEleve,
+            'moyenne_Classe' => $moyenneClasse,
         ]);
     }
 
@@ -101,9 +104,10 @@ class ResultController extends AbstractController
 /* --------------------------------------------------- Route RESULT (Voir résultat) ------------------------------------------------------*/
     #[IsGranted('ROLE_FORMATEUR')]
     #[Route('/{id}', name: 'show', methods: ['GET'])]
-    public function show(Result $result): Response
+    public function show(Result $result, ResultRepository $resultRepository): Response
     {
         return $this->render('result/show.html.twig', [
+            'results' => $resultRepository->findAll(),
             'result' => $result,
         ]);
     }

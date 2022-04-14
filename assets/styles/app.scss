@@ -230,7 +230,7 @@ a {
 }
 
 main{
-	border-top: 2px solid var(--color-gray700);
+	border: none;
 	background-color: var(--color-gray500);
 }
 
@@ -255,6 +255,7 @@ main{
     display: flex;
     position: relative;
     top: 160px; left: 40px;
+    color: white;
 }
 
 .afficher{

@@ -3,43 +3,168 @@
 
 {% block body %}
 
-    <div>
-        <div class="mt-5">
-            <h1>Création d'un Quiz</h1>
-            <p>Bonjour, je vais vous accompagner dans la création du quiz, j'espère pouvoir vous guider de la meilleure façon possible.</p>
-            <p>La création du quiz se fait en 3 étapes : Le thème / la difficulté / l'exercice (qui regroupera tous les QCM)
-        </div>
+
+	
+
+		<div class="d-flex gap-4">
+			<div class="separator"></div>
+			<div class="separator"></div>
+		</div>
+	</div>
+
+	<main class="mt-4">
+		<!--Container Main start-->
+		<div class="pb-5">
+			<div class="mx-4 my-4">
+
+				<div class="bg w-100 p-5 text-white ">
+					<div class="">
+						<h1>Bonjour John D.</h1>
+					</div>
+					<div class=" info">
+						<div class="mx-5">
+							<h3>14</h3>
+							<p>Thèmes</p>
+						</div>
+						<div class="mx-5">
+							<h3>23</h3>
+							<p>Exercices</p>
+						</div>
+						<div class="mx-5">
+							<h3>465</h3>
+							<p>Questions</p>
+						</div>
+					</div>
+					<div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="mx-4 selector">
+				<nav class="navbar navbar-expand-lg navbar-white ">
+					<div class="collapse navbar-collapse afficher " id="navbarNav">
+						<ul class="navbar-nav ">
+							<div class="svg-wrapper ">
+								<svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+									<rect id="shape" height="40" width="150" />
+									<div id="text">
+										<a href="app_main_quiz"><span class="spot"></span>Ajout d'un quizz</a>
+									</div>
+								</svg>
+							</div>
+							<div class="svg-wrapper2 ">
+								<svg height="40" width="250" xmlns="http://www.w3.org/2000/svg">
+									<rect id="shape2" height="40" width="250" />
+									<div id="text">
+										<a href="{{ path('app_category_index') }}"><span class="spot"></span>Afficher tous les thèmes</a>
+									</div>
+								</svg>
+							</div>
+							<div class="svg-wrapper2 ">
+								<svg height="40" width="250" xmlns="http://www.w3.org/2000/svg">
+									<rect id="shape2" height="40" width="250" />
+									<div id="text">
+										<a href="{{ path('app_exercise_index') }}"<span class="spot"></span>Afficher tous les Exercices</a>
+									</div>
+								</svg>
+							</div>
+							<li class="nav-item dropdown navbar-nav navbardrop">
+								<select class="navbardrop  btn nav-link" id='navbarDropdown'>
+									<option value='1' class='volunteer'>Difficulté</option>
+							<li>
+								<hr href="#" class="dropdown-divider">
+							</li>
+							<option value='2' class='volunteer1'>Débutant</option>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
+							<option value='3' class='volunteer2'>Intermédiaire</option>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
+							<option value='4' class='volunteer3'>Expert</option>
+							</select>
+
+							</li>
+						</ul>
+
+					</div>
+				</nav>
+			</div>
+
+		</div>
+		</div>
+		<section class="d-flex">
 
 
-        <div class="mt-5">
-            <p>Pour débuter la création d'un quiz, veuillez créer un thème</p>
-            <p>'Si vous avez déja un thème de créer et que vous souhaitez l'utiliser, passez cette étape !)</p>
-            <a href="{{ path('app_category_new') }}"  class="btn btn-primary">Cliquez ici pour créer un nouveau thème</a>
-            <a href="{{ path('app_category_index') }}"  class="btn btn-primary">Cliquez ici pour voir la liste des thèmes</a>
-        </div>
+			<div class="mx-4 box-left">
+				<div class="img"></div>
+				<div class="example-wrappe ">
 
-        <div class="mt-5">
-            <p>Ensuite pour poursuivre la création d'un quiz, veuillez créer une difficulté</p>
-            <p>(Si vous avez déja une difficulté de créer et que vous souhaitez l'utiliser, passez cette étape !)</p>
-            <a href="{{ path('app_difficulty_new') }}"  class="btn btn-primary">Cliquez ici pour créer une nouvelle difficulté</a>
-            <a href="{{ path('app_difficulty_index') }}"  class="btn btn-primary">Cliquez ici pour voir la liste des difficultés</a>
-        </div>
+					<h1 class="p-5 text-center">Création d'un Quiz</h1>
+					<!-- <p>Bonjour, je vais vous accompagner dans la création du quiz, j'espère pouvoir vous guider de la meilleure façon possible.</p>
+		<p>La création du quiz se fait en 3 étapes : Le thème / la difficulté / l'exercice (qui regroupera tous les QCM) -->
+				</div>
 
-        <div class="mt-5">
-            <p>Afin de poursuivre la création d'un quiz, veuillez créer un exercice</p>
-            <p>(Si vous avez déja un exercice de créer et que vous souhaitez l'utiliser, passez cette étape !)</p>
-            <a href="{{ path('app_exercise_new') }}"  class="btn btn-primary">cliquez ici pour créer un nouvel exercice</a>
-            <a href="{{ path('app_exercise_index') }}"  class="btn btn-primary">Cliquez ici pour voir la liste des exercices</a>
-        </div>
+				<div>
+					<p class="text-center">Pour débuter la création d'un quiz, veuillez créer un thème :</p>
+					<div class="btn-block">
+						<a href="{{ path('app_category_new') }}" class="btn">Nouveau thème</a>
+						<div class="grid-right">
+							<a href="{{ path('app_category_index') }}" class="btn">Liste des thèmes</a>
+						</div>
+					</div>
+					<p class="text-center p-4">Si vous avez déja un thème de créer et que vous souhaitez l'utiliser,
+						passez
+						cette étape !</p>
+				</div>
 
-         <div class="mt-5">
-            <p>Désormais, il ne vous reste plus qu'à créer vos questions/ réponses qui composeront cet exercice</p>
-            <a href="{{ path('question_maker') }}"  class="btn btn-primary">cliquez ici pour créer de nouvelles questions/réponses</a>
-            <a href="#"  class="btn btn-primary">Cliquez ici pour voir la liste de questions/réponses</a>
-        </div>
 
-        <div class="mt-5">
-            <p>Félicitation ! Vous avez terminé la création du quiz !</p>
-        </div>
-    </div>
+
+
+				<div>
+					<p class="text-center">Pour débuter la création d'un quiz, veuillez créer une difficulté</p>
+					<div class="btn-block">
+						<a href="{{ path('app_difficulty_new') }}" class="btn">Nouvelle difficulté</a>
+						<div class="grid-right">
+							<a href="{{ path('app_difficulty_index') }}" class="btn">Liste des difficultés</a>
+						</div>
+					</div>
+					<p class="text-center p-4">Si vous avez déja une difficulté de créer et que vous souhaitez
+						l'utiliser,
+						passez cette étape !</p>
+				</div>
+
+
+				<div>
+					<p class="text-center">Pour débuter la création d'un quiz, veuillez créer un exercice</p>
+					<div class="btn-block">
+						<a href="{{ path('app_exercise_new') }}" class="btn">Nouvelle exercice</a>
+						<div class="grid-right">
+							<a href="{{ path('app_exercise_index') }}" class="btn">Liste des exercices</a>
+						</div>
+					</div>
+					<p class="text-center p-4">Si vous avez déja un exercice de créer et que vous souhaitez l'utiliser,
+						passez cette étape !</p>
+				</div>
+
+
+				<div>
+					<p class="text-center">Félicitation ! Vous avez terminé la création du quiz !</p>
+				</div>
+			</div>
+
+
+			<div class="box-right mx-4 d-flex">
+
+				<h3 class="m-3">Exercice récent</h3>
+				<a href="#" class="btn-view p-4">Voir plus ></a>
+				<hr>
+
+			</div>
+
+
+		</section>
+	</main>
 {% endblock %}

@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Question;
 use App\Entity\Media;
 use App\Repository\ExerciseRepository;
+use App\Repository\MediaRepository;
+use App\Repository\QuestionRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -74,14 +76,13 @@ class QuestionController extends AbstractController
 
             if ( isset($image) && !empty($image) ){
 
-                $extention = $image->guessExtension(); 
-                $fichier = uniqid().'.'.$extention;
-                $image->move(
-                    $this->getParameter('images_directory'), $fichier
-                );
+                $extention = $image->guessExtension();
+                $chemin = $this->getParameter('images_directory');
+                $nom = uniqid().'.'.$extention;
+                $image->move( $chemin, $nom );
 
                 $media = new Media;
-                $media->setContent($fichier);
+                $media->setContent($chemin);
                 $media->setFormat($extention);
                 
                 $question->setMedia($media);
@@ -107,6 +108,23 @@ class QuestionController extends AbstractController
 
         return $this->renderForm('question/maker.html.twig', [
             'form' => $form,
+        ]);
+    }
+
+
+    #[Route('/show/{id}', name: 'show')]
+    public function questionShow(int $id, ExerciseRepository $exoRepo, QuestionRepository $questRepo, MediaRepository $mediaRepo) {
+
+        $exo = $exoRepo->find($id);
+        $questions = $questRepo->find($exo);
+        $media = $mediaRepo->find($questions);
+        //var_dump($exo);
+        //var_dump($questions);
+        //var_dump($media);
+
+        return $this->renderForm('question/show.html.twig', [
+            'questions' => $questions,
+            'media' => $media,
         ]);
     }
 

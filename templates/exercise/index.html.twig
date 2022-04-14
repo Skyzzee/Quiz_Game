@@ -12,6 +12,7 @@
 				<th>Titre</th>
 				<th>Categorie</th>
 				<th>Difficulté</th>
+				<th>Nbr de question</th>
 
 
 			</tr>
@@ -23,11 +24,13 @@
 						<td>{{ exercise.title }}</td>
 						<td>{{ exercise.category.name }}</td>
 						<td>{{ exercise.difficulty.name }}</td>
+						<td>{{ exercise.question | length }} </td>
 
 		
 						<td>
 							<a href="{{ path('app_exercise_show', {'id': exercise.id}) }}">Afficher</a>
 							<a href="{{ path('app_exercise_edit', {'id': exercise.id}) }}">Modifier</a>
+							<a href="{{ path('question_maker', {'id': exercise.id}) }}">ajouter une question</a>
 						</td>
 					</tr>
 				{% else %}

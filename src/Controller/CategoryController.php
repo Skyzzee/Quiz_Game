@@ -47,16 +47,6 @@ class CategoryController extends AbstractController
         ]);
     }
 
-/* --------------------------------------------------- Route CATEGORY (Voir catégorie) -----------------------------------------------------*/
-
-    #[Route('/{id}', name: 'show', methods: ['GET'])]
-    public function show(Category $category): Response
-    {
-        return $this->render('category/show.html.twig', [
-            'category' => $category,
-        ]);
-    }
-
 /* ------------------------------------------------ Route CATEGORY (Modifiaction catégorie) ------------------------------------------------*/
 
     #[Route('/{id}/edit', name: 'edit', methods: ['GET', 'POST'])]

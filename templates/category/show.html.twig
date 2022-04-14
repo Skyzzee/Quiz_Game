@@ -35,13 +35,12 @@
 					<h2 class="h4 text-title-h2 text-center mb-3">Exercices ({{ category.exercises|length }})</h2>
 				{% endif %}
 
-				{# Affichage de tous les Exercices en les parcourant avec une boucle #}
-				{% for exercise in category.exercises %}
+				
 
 					<div
 						class="card my-3 bg-category">
 
-
+						{# Affichage de tous les Exercices en les parcourant avec une boucle #}
 						{# Contenu de l'exercice #}
 						<div class="card-body">
 							<tbody>
@@ -63,7 +62,6 @@
 										</tbody>
 									</table>
 
-									<a href="{{ path('app_exercise_show', {'id': exercise.id}) }}">Afficher</a>
 									<a href="{{ path('app_exercise_edit', {'id': exercise.id}) }}">Modifier</a>
 
 									<a href="{{ path('app_category_index') }}">Retour</a>

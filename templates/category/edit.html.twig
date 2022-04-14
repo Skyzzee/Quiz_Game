@@ -3,7 +3,7 @@
 {% block title %}Modifier le thème{% endblock %}
 
 {% block body %}
-
+<div class="mx-5 adminselector p-2 my-5">
     <h1>Modifier le thème</h1>
 
     
@@ -14,4 +14,5 @@
     <a href="{{ path('app_exercise_index') }}" class="btn btn-primary">Retour à la création de quiz</a>
 
     {{ include('category/_delete_form.html.twig') }}
+</div>
 {% endblock %}

@@ -35,7 +35,7 @@ class RegistrationFormType extends AbstractType
 
         /* ------------------------------------------- NOM ------------------------------------------*/
             ->add('name', TextType::class, [
-                'help' => 'Votre Prénom doit comporter 2 caractères minimum 50 maximum',
+                'help' => 'Votre Nom doit comporter 2 caractères minimum 50 maximum',
                 'constraints' => [
                     new NotBlank([ /* Vérifie que le champs ne soit pas vide */
                         'message' => 'Veuillez renseigner votre Nom',

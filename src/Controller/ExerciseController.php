@@ -5,10 +5,11 @@ namespace App\Controller;
 use App\Entity\Exercise;
 use App\Form\ExerciseType;
 use App\Repository\ExerciseRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /* ---------------------------------------------------- Route EXERCISE (Principal) ---------------------------------------------------------*/
 
@@ -17,7 +18,7 @@ class ExerciseController extends AbstractController
 {
 
 /* ---------------------------------------------------------- Route EXERCISE (Home) --------------------------------------------------------*/
-
+    #[IsGranted('ROLE_APPRENANT')]
     #[Route('/', name: 'index', methods: ['GET'])]
     public function index(ExerciseRepository $exerciseRepository): Response
     {
@@ -27,7 +28,7 @@ class ExerciseController extends AbstractController
     }
 
 /* ------------------------------------------------- Route EXERCISE (Création exercice) ----------------------------------------------------*/
-
+    #[IsGranted('ROLE_FORMATEUR')]
     #[Route('/new', name: 'new', methods: ['GET', 'POST'])]
     public function new(Request $request, ExerciseRepository $exerciseRepository): Response
     {
@@ -48,18 +49,8 @@ class ExerciseController extends AbstractController
         ]);
     }
 
-/* --------------------------------------------------- Route EXERCISE (Voir exercice) ------------------------------------------------------*/
-
-    #[Route('/{id}', name: 'show', methods: ['GET'])]
-    public function show(Exercise $exercise): Response
-    {
-        return $this->render('exercise/show.html.twig', [
-            'exercise' => $exercise,
-        ]);
-    }
-
 /* ------------------------------------------------ Route EXERCISE (Modifiaction exercice) -------------------------------------------------*/
-
+    #[IsGranted('ROLE_FORMATEUR')]
     #[Route('/{id}/edit', name: 'edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Exercise $exercise, ExerciseRepository $exerciseRepository): Response
     {
@@ -78,7 +69,7 @@ class ExerciseController extends AbstractController
     }
 
 /* ------------------------------------------------ Route EXERCISE (Suppression exercice) --------------------------------------------------*/
-
+    #[IsGranted('ROLE_FORMATEUR')]
     #[Route('/{id}', name: 'delete', methods: ['POST'])]
     public function delete(Request $request, Exercise $exercise, ExerciseRepository $exerciseRepository): Response
     {

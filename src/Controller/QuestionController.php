@@ -4,22 +4,24 @@ namespace App\Controller;
 
 use App\Entity\Question;
 use App\Entity\Media;
-use App\Repository\QuestionRepository;
+use App\Repository\ExerciseRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+#[IsGranted('ROLE_FORMATEUR')]
 #[Route('/question', name: 'question_')]
 class QuestionController extends AbstractController
 {
-    #[Route('/maker', name: 'maker')]
-    public function questionMaker(Request $request, EntityManagerInterface $manager): Response
+    #[Route('/maker/{id}', name: 'maker')]
+    public function questionMaker(Request $request, EntityManagerInterface $manager, ExerciseRepository $exoRepo, int $id): Response
     {
         $question = new Question;
         $form = $this->createFormBuilder($question)
@@ -67,30 +69,38 @@ class QuestionController extends AbstractController
                             [$answer5 => $isTrue5],
                             [$answer6 => $isTrue6],
                         ];
-
+                        
             $image = $form['image']->getData();
-            $extention = $image->guessExtension(); 
-            $fichier = md5(uniqid()) . '.' . $extention;
-            $image->move(
-                $this->getParameter('images_directory'), $fichier
-            );
 
+            if ( isset($image) && !empty($image) ){
 
-            $media = new Media;
-            $media->setContent($fichier);
-            $media->setFormat($extention);
-            
-            $question->setMedia($media);
+                $extention = $image->guessExtension(); 
+                $fichier = uniqid().'.'.$extention;
+                $image->move(
+                    $this->getParameter('images_directory'), $fichier
+                );
+
+                $media = new Media;
+                $media->setContent($fichier);
+                $media->setFormat($extention);
+                
+                $question->setMedia($media);
+                $manager->persist($media);
+            }
+
             $question->setAnswer($answerArray);
+
+            $exo = $exoRepo->find($id);
+            $question->setExercise($exo);
             // Pour stocker en bdd, Doctrine utilise serialize().
             // Pour relire le tableau en sortie de bdd, utiliser unserialize($tableau).
-
-            $manager->persist($question, $media);
+    
+            $manager->persist($question);
             $manager->flush();
 
             // REDIRECTION ?    AFFICHAGE 'Question bien ajoutée'  ?
 
-            // LIAISON AVEC UN EXO OBLIGATOIRE
+            return $this->redirectToRoute('app_main_base');
         
             }
 

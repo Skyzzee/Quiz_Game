@@ -18,26 +18,26 @@
 					<div class="bg w-100 p-5 text-white ">
 			    <div class="example-wrapper">
                     {% if app.user %}
-                            <h1>Bonjour, {{ app.user.firstname }}</h1>
-                            <p>Comment allez-vous aujourd'hui ?<p>
+                            <h1 class="text-white">Bonjour, {{ app.user.firstname }}</h1>
+                            <p class="text-white">Comment allez-vous aujourd'hui ?<p>
                     {% else %}
-                            <h1>Bienvenue Monsieur, </h1>
-                            <p>Connectez-vous afin d'effectuer vos premiers Quiz !<p>
+                            <h1 class="text-white">Bienvenue Monsieur, </h1>
+                            <p class="text-white">Connectez-vous afin d'effectuer vos premiers Quiz !<p>
                     {% endif %}
                 </div>
                     
                     
-						<div class=" info">
+						<div class="info">
 							<div class="mx-5">
-								<h3>14</h3>
+								<h3 class="text-white">14</h3>
 								<p>Thèmes</p>
 							</div>
 							<div class="mx-5">
-								<h3>23</h3>
+								<h3 class="text-white">23</h3>
 								<p>Exercices</p>
 							</div>
 							<div class="mx-5">
-								<h3>465</h3>
+								<h3 class="text-white">465</h3>
 								<p>Questions</p>
 							</div>
 						</div>
@@ -63,18 +63,19 @@
 									<svg height="40" width="250" xmlns="http://www.w3.org/2000/svg">
 									  <rect id="shape2" height="40" width="250" />
 									  <div id="text">
-										<a href="theme.html"><span class="spot"></span>Afficher tous les thèmes</a>
+										<a href="{{ path('app_category_index') }}"><span class="spot"></span>Afficher tous les thèmes</a>
 									  </div>
 									</svg>
 								  </div>
-								  <div class="svg-wrapper2">
+								  <div class="svg-wrapper2 ">
 									<svg height="40" width="250" xmlns="http://www.w3.org/2000/svg">
 									  <rect id="shape2" height="40" width="250" />
 									  <div id="text">
-										<a href="exercise.html"><span class="spot"></span>Afficher tous les Exercices</a>
+										<a href="{{ path('app_exercise_index') }}"><span class="spot"></span>Afficher tous les Exercices</a>
 									  </div>
 									</svg>
-								  </div>	  
+								  </div>
+								  
 							<li class="nav-item dropdown navbar-nav navbardrop">								
 								<select class="navbardrop  btn nav-link" id='navbarDropdown'>
 									<option value='1' class='volunteer'>Difficulté</option>

@@ -6,7 +6,13 @@
 {% block title %}Nom de l'exercice
 {% endblock %}
 
+
+
 {% block body %}
+<<<<<<< HEAD
+=======
+
+>>>>>>> d5157955c6267706f00d9e1afe57ca383b275b47
 <main class="mt-4">
 		<!--Container Main start-->
 		<div class="pb-5">
@@ -40,22 +46,43 @@
             <div class="mx-4 selector">
 					<nav class="navbar navbar-expand-lg navbar-white ">		
 						  <div class="collapse navbar-collapse afficher " id="navbarNav">
+<<<<<<< HEAD
 								<ul class="navbar-nav ">
 								  <div class="svg-wrapper2 ">
 									<svg height="60" width="160" xmlns="http://www.w3.org/2000/svg">
 									  <rect id="shape2" height="60" width="160" />
+=======
+							<ul class="navbar-nav ">
+								<div class="svg-wrapper ">
+									<svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+									  <rect id="shape" height="40" width="150" />
+									  <div id="text">
+										<a href="{{ path('app_main_quiz') }}"><span class="spot"></span>Ajout d'un quizz</a>
+									  </div>
+									</svg>
+								  </div>
+								  <div class="svg-wrapper2 ">
+									<svg height="40" width="250" xmlns="http://www.w3.org/2000/svg">
+									  <rect id="shape2" height="40" width="250" />
+>>>>>>> d5157955c6267706f00d9e1afe57ca383b275b47
 									  <div id="text">
 										<a href="{{ path('app_category_index') }}"><span class="spot"></span>Afficher tous les thèmes</a>
 									  </div>
 									</svg>
 								  </div>
 								  <div class="svg-wrapper2 ">
+<<<<<<< HEAD
 									<svg height="60" width="160" xmlns="http://www.w3.org/2000/svg">
 									  <rect id="shape2" height="60" width="160" />
+=======
+									<svg height="40" width="250" xmlns="http://www.w3.org/2000/svg">
+									  <rect id="shape2" height="40" width="250" />
+>>>>>>> d5157955c6267706f00d9e1afe57ca383b275b47
 									  <div id="text">
 										<a href="{{ path('app_exercise_index') }}"><span class="spot"></span>Afficher tous les Exercices</a>
 									  </div>
 									</svg>
+<<<<<<< HEAD
 			
 							</div>
 							<li class="nav-item dropdown navbar-nav navbardrop">
@@ -134,3 +161,37 @@
 </section>
 </main>
 {% endblock %}
+=======
+								  </div>
+  </main>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom du Thème</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.name }}</td>
+                <td>
+                    
+                    <a href="{{ path('app_category_edit', {'id': category.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Pas de résultats</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_category_new') }}" class="btn btn-primary">Ajouter un Thème</a>
+    <a href="{{ path('app_main_quiz') }}" class="btn btn-primary">Retour à la création de quiz</a>
+{% endblock %}
+>>>>>>> d5157955c6267706f00d9e1afe57ca383b275b47

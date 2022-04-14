@@ -5,10 +5,11 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
 /* ----------------------------------------------------- Route CATEGORY (Principal) --------------------------------------------------------*/
@@ -18,7 +19,7 @@ class CategoryController extends AbstractController
 {
 
 /* ---------------------------------------------------------- Route CATEGORY (Home) --------------------------------------------------------*/
-
+    #[IsGranted('ROLE_APPRENANT')]
     #[Route('/', name: 'index', methods: ['GET'])]
     public function index(CategoryRepository $categoryRepository): Response
     {
@@ -28,7 +29,7 @@ class CategoryController extends AbstractController
     }
 
 /* ------------------------------------------------- Route CATEGORY (Création catégorie) ---------------------------------------------------*/
-
+    #[IsGranted('ROLE_FORMATEUR')]
     #[Route('/new', name: 'new', methods: ['GET', 'POST'])]
     public function new(Request $request, CategoryRepository $categoryRepository): Response
     {
@@ -47,18 +48,8 @@ class CategoryController extends AbstractController
         ]);
     }
 
-/* --------------------------------------------------- Route CATEGORY (Voir catégorie) -----------------------------------------------------*/
-
-    #[Route('/{id}', name: 'show', methods: ['GET'])]
-    public function show(Category $category): Response
-    {
-        return $this->render('category/show.html.twig', [
-            'category' => $category,
-        ]);
-    }
-
 /* ------------------------------------------------ Route CATEGORY (Modifiaction catégorie) ------------------------------------------------*/
-
+    #[IsGranted('ROLE_FORMATEUR')]
     #[Route('/{id}/edit', name: 'edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Category $category, CategoryRepository $categoryRepository): Response
     {
@@ -77,7 +68,7 @@ class CategoryController extends AbstractController
     }
 
 /* ------------------------------------------------ Route CATEGORY (Suppression catégorie) -------------------------------------------------*/
-
+    #[IsGranted('ROLE_FORMATEUR')]
     #[Route('/{id}', name: 'delete', methods: ['POST'])]
     public function delete(Request $request, Category $category, CategoryRepository $categoryRepository): Response
     {

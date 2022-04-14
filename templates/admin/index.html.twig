@@ -3,6 +3,7 @@
 {% block title %}Menu Administrateur{% endblock %}
 
 {% block body %}
+    
     <h1>Menu Administrateur</h1>
     <h2>Liste des utilisateurs</h2>
 
@@ -24,7 +25,7 @@
                 <td>{{ user.firstname }}</td>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
                 <td>
-                    <a href="{{ path('app_admin_show', {'id': user.id}) }}">Voir</a>
+                
                 {% if  user.roles[0] != 'ROLE_ADMIN'  %} {# Possibilité de Modifier tous les utilisateurs SAUF l' Admin #}
                     <a href="{{ path('app_admin_edit', {'id': user.id}) }}">Modifier</a>
                 {% endif %}

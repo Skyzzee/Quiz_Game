@@ -5,13 +5,14 @@ namespace App\Controller;
 use App\Entity\Difficulty;
 use App\Form\DifficultyType;
 use App\Repository\DifficultyRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /* --------------------------------------------------- Route DIFFICULTY (Principal)  ---------------------------------------------------------*/
-
+#[IsGranted('ROLE_ADMIN')]
 #[Route('/difficulty', name: 'app_difficulty_')]
 class DifficultyController extends AbstractController
 {

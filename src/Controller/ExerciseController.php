@@ -5,13 +5,14 @@ namespace App\Controller;
 use App\Entity\Exercise;
 use App\Form\ExerciseType;
 use App\Repository\ExerciseRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /* ---------------------------------------------------- Route EXERCISE (Principal) ---------------------------------------------------------*/
-
+#[IsGranted('ROLE_ADMIN')]
 #[Route('/exercise', name: 'app_exercise_')]
 class ExerciseController extends AbstractController
 {

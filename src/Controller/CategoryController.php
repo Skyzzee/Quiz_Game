@@ -5,14 +5,15 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
 /* ----------------------------------------------------- Route CATEGORY (Principal) --------------------------------------------------------*/
-
+#[IsGranted('ROLE_ADMIN')]
 #[Route('/category', name: 'app_category_')]
 class CategoryController extends AbstractController
 {
@@ -48,7 +49,7 @@ class CategoryController extends AbstractController
     }
 
 /* --------------------------------------------------- Route CATEGORY (Voir catégorie) -----------------------------------------------------*/
-
+ 
     #[Route('/{id}', name: 'show', methods: ['GET'])]
     public function show(Category $category): Response
     {

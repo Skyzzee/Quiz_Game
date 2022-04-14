@@ -5,13 +5,14 @@ namespace App\Controller;
 use App\Entity\Result;
 use App\Form\ResultType;
 use App\Repository\ResultRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /* ------------------------------------------------------- Route RESULT (Principal) ------------------------------------------------------*/
-
+#[IsGranted('ROLE_ADMIN')]
 #[Route('/result', name: 'app_result_')]
 class ResultController extends AbstractController
 {

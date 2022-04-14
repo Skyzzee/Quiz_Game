@@ -18,6 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/question', name: 'question_')]
 class QuestionController extends AbstractController
 {
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/maker', name: 'maker')]
     public function questionMaker(Request $request, EntityManagerInterface $manager): Response
     {

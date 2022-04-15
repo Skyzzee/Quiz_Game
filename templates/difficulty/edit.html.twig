@@ -3,7 +3,31 @@
 {% block title %}Modifier la Difficulté{% endblock %}
 
 {% block body %}
-    <h1>Modifier la Difficulté</h1>
+    <div class="pb-5">
+			<div class="mx-4 my-4">
+
+				<div class="bg w-100 p-5 text-white ">
+					<div class="">
+						  <h1 class="text-white">Modifier la Difficulté</h1>
+					</div>
+                
+				<div class="info">
+                    <div class="mx-5">
+                        <h3 class="text-white">14</h3>
+                        <p>Thèmes</p>
+                    </div>
+                    <div class="mx-5">
+                        <h3 class="text-white">23</h3>
+                        <p>Exercices</p>
+                    </div>
+                    <div class="mx-5">
+                        <h3 class="text-white">465</h3>
+                        <p>Questions</p>
+                    </div>
+                </div>
+				</div>
+			</div>
+<div class="mx-5 adminselector p-2 my-5">
 
     {{ include('difficulty/_form.html.twig', {'button_label': 'Modifier la difficulté'}) }}
 
@@ -11,4 +35,5 @@
     <a href="{{ path('app_exercise_index') }}" class="btn btn-primary">Retour à la création de quiz</a>
 
     {{ include('difficulty/_delete_form.html.twig') }}
+</div>
 {% endblock %}

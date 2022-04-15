@@ -3,8 +3,34 @@
 {% block title %}Modification{% endblock %}
 
 {% block body %}
+<div class="pb-5">
+			<div class="mx-4 my-4">
+
+				<div class="bg w-100 p-5 text-white ">
+					<div class="">
+						  <h1 class="text-white">Modifier le utilisateur</h1>
+					</div>
+				<div class="info">
+							<div class="mx-5">
+								<h3 class="text-white">14</h3>
+								<p>Thèmes</p>
+							</div>
+							<div class="mx-5">
+								<h3 class="text-white">23</h3>
+								<p>Exercices</p>
+							</div>
+							<div class="mx-5">
+								<h3 class="text-white">465</h3>
+								<p>Questions</p>
+						</div>
+					</div>
+					<div>
+
+					</div>
+				</div>
+			</div>
+
 <div class="mx-5 adminselector p-2 my-5">
-    <h1>Menu Administrateur</h1>
     <h2>Modifier l'utilisateur n°{{ user.id }}</h2>
 
     {{ include('admin/_form.html.twig', {'button_label': 'Valider la modification'}) }}

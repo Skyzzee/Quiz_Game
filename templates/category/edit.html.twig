@@ -3,10 +3,34 @@
 {% block title %}Modifier le thème{% endblock %}
 
 {% block body %}
-<div class="mx-5 adminselector p-2 my-5">
-    <h1>Modifier le thème</h1>
 
-    
+        <div class="pb-5">
+			<div class="mx-4 my-4">
+
+				<div class="bg w-100 p-5 text-white ">
+					<div class="">
+						  <h1 class="text-white">Modifier le thème</h1>
+					</div>
+				<div class="info">
+							<div class="mx-5">
+								<h3 class="text-white">14</h3>
+								<p>Thèmes</p>
+							</div>
+							<div class="mx-5">
+								<h3 class="text-white">23</h3>
+								<p>Exercices</p>
+							</div>
+							<div class="mx-5">
+								<h3 class="text-white">465</h3>
+								<p>Questions</p>
+						</div>
+					</div>
+					<div>
+
+					</div>
+				</div>
+			</div>
+<div class="mx-5 adminselector p-2 my-5">
 
     {{ include('category/_form.html.twig', {'button_label': 'Modifier le thème'}) }}
 

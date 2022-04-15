@@ -1,96 +1,101 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nom de l'exercice{% endblock %}
+{% block title %}Nom de l'exercice
+{% endblock %}
 
 {% block body %}
 
-<main class="mt-4">
+	<main
+		class="mt-4">
 		<!--Container Main start-->
 		<div class="pb-5">
 			<div class="mx-4 my-4">
 
 				<div class="bg w-100 p-5 text-white ">
 					<div class="">
-						  <h1 class="text-white">Nom de l'exercice</h1>
+						<h1 class="text-white">Nom de l'exercice</h1>
 					</div>
-				<div class="info">
-							<div class="mx-5">
-								<h3 class="text-white">14</h3>
-								<p>Thèmes</p>
-							</div>
-							<div class="mx-5">
-								<h3 class="text-white">23</h3>
-								<p>Exercices</p>
-							</div>
-							<div class="mx-5">
-								<h3 class="text-white">465</h3>
-								<p>Question</p>
+					<div class="info">
+						<div class="mx-5">
+							<h3 class="text-white">14</h3>
+							<p>Thèmes</p>
+						</div>
+						<div class="mx-5">
+							<h3 class="text-white">23</h3>
+							<p>Exercices</p>
+						</div>
+						<div class="mx-5">
+							<h3 class="text-white">465</h3>
+							<p>Questions</p>
 						</div>
 					</div>
-					<div>
-
-					</div> 
+					<div></div>
 				</div>
 			</div>
 
 
-            <div class="mx-4 selector">
-					<nav class="navbar navbar-expand-lg navbar-white ">		
-						  <div class="collapse navbar-collapse afficher " id="navbarNav">
-							<ul class="navbar-nav ">
-								 <div class="svg-wrapper2 ">
-									<svg height="60" width="160" xmlns="http://www.w3.org/2000/svg">
-									  <rect id="shape2" height="60" width="160" />
-									  <div id="text">
-										<a href="{{ path('app_category_index') }}"><span class="spot"></span>Afficher tous les thèmes</a>
-									  </div>
-									</svg>
-								  </div>
-								  <div class="svg-wrapper2 ">
-									<svg height="60" width="160" xmlns="http://www.w3.org/2000/svg">
-									  <rect id="shape2" height="60" width="160" />
-									  <div id="text">
-										<a href="{{ path('app_exercise_index') }}"><span class="spot"></span>Afficher tous les Exercices</a>
-									  </div>
-									</svg>
-								  </div>
-  </main>
-	
+			<div class="mx-4 selector">
+				<nav class="navbar navbar-expand-lg navbar-white ">
+					<div class="collapse navbar-collapse afficher " id="navbarNav">
+						<ul class="navbar-nav ">
+							<div class="svg-wrapper2 ">
+								<svg height="60" width="160" xmlns="http://www.w3.org/2000/svg">
+									<rect id="shape2" height="60" width="160"/>
+									<div id="text">
+										<a href="{{ path('app_category_index') }}">
+											<span class="spot"></span>Afficher tous les thèmes</a>
+									</div>
+								</svg>
+							</div>
+							<div class="svg-wrapper2 ">
+								<svg height="60" width="160" xmlns="http://www.w3.org/2000/svg">
+									<rect id="shape2" height="60" width="160"/>
+									<div id="text">
+										<a href="{{ path('app_exercise_index') }}">
+											<span class="spot"></span>Afficher tous les Exercices</a>
+									</div>
+								</svg>
+							</div>
+						</main>
 
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Titre</th>
-				<th>Categorie</th>
-				<th>Difficulté</th>
-				<th>Nbr de question</th>
+						<div class="mx-5 p-2 my-5">
+							<table class="table">
+								<thead class="bg-table">
+									<tr>
+										<th>Id</th>
+										<th>Titre</th>
+										<th>Categorie</th>
+										<th>Difficulté</th>
+										<th>Nbr de question</th>
+										<th>Outils</th>
 
 
-			</tr>
-		</thead>
-			<tbody>
-				{% for exercise in exercises %}
-					<tr>
-						<td>{{ exercise.id }}</td>
-						<td>{{ exercise.title }}</td>
-						<td>{{ exercise.category.name }}</td>
-						<td>{{ exercise.difficulty.name }}</td>
-						<td>{{ exercise.question | length }} </td>
+									</tr>
+								</thead>
+								<tbody>
+									{% for exercise in exercises %}
+										<tr>
+											<td>{{ exercise.id }}</td>
+											<td>{{ exercise.title }}</td>
+											<td>{{ exercise.category.name }}</td>
+											<td>{{ exercise.difficulty.name }}</td>
+											<td>{{ exercise.question | length }}
+											</td>
 
-		
-						<td>
-							<a href="{{ path('app_exercise_edit', {'id': exercise.id}) }}">Modifier</a>
-							<a href="{{ path('question_maker', {'id': exercise.id}) }}">Ajouter une question</a>
-						</td>
-					</tr>
-				{% else %}
-					<tr>
-						<td colspan="3">Pas de résultats</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-	<a href="{{ path('app_exercise_new') }}" class="btn btn-primary">Ajouter un exercice</a>	
-	<a href="{{ path('app_main_quiz') }}" class="btn btn-primary">Retour à la création de quiz</a>
-	{% endblock %}
+
+											<td>
+												<a href="{{ path('app_exercise_edit', {'id': exercise.id}) }}">Modifier</a>
+												<a href="{{ path('question_maker', {'id': exercise.id}) }}">Ajouter une question</a>
+											</td>
+										</tr>
+									{% else %}
+										<tr>
+											<td colspan="3">Pas de résultats</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+						<a href="{{ path('app_exercise_new') }}" class="btn btn-primary">Ajouter un exercice</a>
+						<a href="{{ path('app_main_quiz') }}" class="btn btn-primary">Retour à la création de quiz</a>
+					{% endblock %}

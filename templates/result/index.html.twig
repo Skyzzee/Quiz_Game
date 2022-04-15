@@ -1,84 +1,111 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Résultat{% endblock %}
+{% block title %}Résultat
+{% endblock %}
 
 {% block body %}
 
-    {% if is_granted('ROLE_FORMATEUR') %}
+	{% if is_granted('ROLE_FORMATEUR') %}
 
-     <h1>Résultats de la classe</h1>
+		<!--Container Main start-->
+		<div class="pb-5">
+			<div class="mx-4 my-4">
 
-        <p>Moyenne de la classe :{{ moyenne_Classe }}</p>
+				<div class="bg w-100 p-5 text-white ">
+					<div class="">
+						<h1 class="text-white">Résultats de la classe</h1>
+                        			<h3 class="text-white">Moyenne de la classe :{{ moyenne_Classe }}</h3>
+					</div>
+					<div class="info">
+						<div class="mx-5">
+							<h3 class="text-white">14</h3>
+							<p>Thèmes</p>
+						</div>
+						<div class="mx-5">
+							<h3 class="text-white">23</h3>
+							<p>Exercices</p>
+						</div>
+						<div class="mx-5">
+							<h3 class="text-white">465</h3>
+							<p>Questions</p>
+						</div>
+					</div>
+					<div></div>
+				</div>
+			</div>
+			<div class="mx-5 p-2 my-5">
+				<table class="table">
+					<thead class="bg-table">
+						<tr>
+							<th>Apprenant</th>
+							<th>Moyenne</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for result in results %}
+							<tr>
+								<td>{{ result.user.name }}
+									{{ result.user.firstname }}</td>
+								<td>{{ moyenne_Eleve }}
+									/ 20</td>
+								<td>
+									<a href="{{ path('app_result_show', {'id': result.id}) }}">Voir</a>
+									<a href="{{ path('app_result_edit', {'id': result.id}) }}">Modifier</a>
+								</td>
+							</tr>
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Apprenant</th>     
-                    <th>Moyenne</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for result in results %}
-                    <tr>
-                        <td>{{ result.user.name }} {{ result.user.firstname }}</td>
-                        <td>{{ moyenne_Eleve }} / 20</td>
-                        <td>
-                            <a href="{{ path('app_result_show', {'id': result.id}) }}">Voir</a>
-                            <a href="{{ path('app_result_edit', {'id': result.id}) }}">Modifier</a>
-                        </td>
-                    </tr>
-                    
-                {% else %}
-                    <tr>
-                        <td colspan="4">Rien à été trouvé</td>
-                    </tr>
-                {% endfor %}
+						{% else %}
+							<tr>
+								<td colspan="4">Rien à été trouvé</td>
+							</tr>
+						{% endfor %}
 
-            </tbody>
-        </table>
+					</tbody>
+				</table>
+			</div>
+			<a href="{{ path('app_result_new') }}" class="btn btn-primary">Créer un nouveau resultat</a>
 
-        <a href="{{ path('app_result_new') }}" class="btn btn-primary">Créer un nouveau resultat</a>
+		{% else %}
 
-    {% else %}
+			<h1>Mes résultats</h1>
 
-     <h1>Mes résultats</h1>
+			<p>Moyenne :{{ moyenne_Eleve }}</p>
 
-        <p>Moyenne :{{ moyenne_Eleve }}</p>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Apprenant</th>
+						<th>Exercice</th>
+						<th>Notes</th>
+						<th>Fait_le</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for result in results %}
+						<tr>
+							<td>{{ result.user.name }}
+								{{ result.user.firstname }}</td>
+							<td>{{ result.exercise.title }}</td>
+							<td>{{ result.grades }}
+								/ 20</td>
+							<td>{{ result.updateAt ? result.updateAt|date('Y-m-d H:i:s') : '' }}</td>
+							<td>
+								<a href="{{ path('app_result_edit', {'id': result.id}) }}">Modifier</a>
+							</td>
+						</tr>
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Apprenant</th>
-                    <th>Exercice</th>     
-                    <th>Notes</th>
-                    <th>Fait_le</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for result in results %}
-                    <tr>
-                        <td>{{ result.user.name }} {{ result.user.firstname }}</td>
-                        <td>{{ result.exercise.title }}</td>
-                        <td>{{ result.grades }} / 20</td>
-                        <td>{{ result.updateAt ? result.updateAt|date('Y-m-d H:i:s') : '' }}</td>
-                        <td>
-                            <a href="{{ path('app_result_edit', {'id': result.id}) }}">Modifier</a>
-                        </td>
-                    </tr>
-                    
-                {% else %}
-                    <tr>
-                        <td colspan="4">Rien à été trouvé</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+					{% else %}
+						<tr>
+							<td colspan="4">Rien à été trouvé</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
 
-        <a href="{{ path('app_result_new') }}" class="btn btn-primary">Créer un nouveau resultat</a>
+			<a href="{{ path('app_result_new') }}" class="btn btn-primary">Créer un nouveau resultat</a>
 
-    {% endif %}
+		{% endif %}
 
-{% endblock %}
-
+	{% endblock %}

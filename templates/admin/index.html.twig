@@ -1,45 +1,72 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Menu Administrateur{% endblock %}
+{% block title %}Menu Administrateur
+{% endblock %}
 
 {% block body %}
-    <div class="mx-5 adminselector p-2 my-5">
-        <h1>Menu Administrateur</h1>
-        <h2>Liste des utilisateurs</h2>
-    </div>
+	<div
+		class="mx-5 p-2 my-5">
+		<!--Container Main start-->
+		<div class="pb-5">
+			<div class="mx-4 my-4">
 
-    <div  class="mx-5 p-2 my-5">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Email</th>
-                    <th>Name</th>
-                    <th>Firstname</th>
-                    <th>Roles</th>
-                    <th>actions</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for user in users %}
-                <tr>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.name }}</td>
-                    <td>{{ user.firstname }}</td>
-                    <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                    <td>
-                    
-                    {% if  user.roles[0] != 'ROLE_ADMIN'  %} {# Possibilité de Modifier tous les utilisateurs SAUF l' Admin #}
-                        <a href="{{ path('app_admin_edit', {'id': user.id}) }}">Modifier</a>
-                    {% endif %}
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="7">Aucun élément trouvé</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-	</div> 
-  
-{% endblock %}
+				<div class="bg w-100 p-5 text-white ">
+					<div class="">
+						<h1 class="text-white">Menu Administrateur</h1>
+						<h2 class="text-white">Liste des utilisateurs</h2>
+					</div>
+					<div class="info">
+						<div class="mx-5">
+							<h3 class="text-white">14</h3>
+							<p>Thèmes</p>
+						</div>
+						<div class="mx-5">
+							<h3 class="text-white">23</h3>
+							<p>Exercices</p>
+						</div>
+						<div class="mx-5">
+							<h3 class="text-white">465</h3>
+							<p>Questions</p>
+						</div>
+					</div>
+					<div></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="mx-5 p-2 my-5">
+			<table class="table">
+				<thead class="bg-table">
+					<tr>
+						<th>Email</th>
+						<th>Name</th>
+						<th>Firstname</th>
+						<th>Roles</th>
+						<th>actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for user in users %}
+						<tr>
+							<td>{{ user.email }}</td>
+							<td>{{ user.name }}</td>
+							<td>{{ user.firstname }}</td>
+							<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+							<td>
+
+								{% if  user.roles[0] != 'ROLE_ADMIN'  %}
+									{# Possibilité de Modifier tous les utilisateurs SAUF l' Admin #}
+									<a href="{{ path('app_admin_edit', {'id': user.id}) }}">Modifier</a>
+								{% endif %}
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="7">Aucun élément trouvé</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+
+	{% endblock %}

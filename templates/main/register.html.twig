@@ -1,42 +1,75 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription{% endblock %}
+{% block title %}Inscription
+{% endblock %}
 
 {% block stylesheets %}
- {# inclus le block CSS commun #}
-     {{ parent() }}
-     {# Insertion du fichier JS dans le block stylesheets #}
-     {# La documentation de Recaptcha préconise en effet d'intégrer ce fichier JS dans le head #}
-     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-{% endblock %}	
+	{# inclus le block CSS commun #}
+	{{ parent() }}
+	{# Insertion du fichier JS dans le block stylesheets #}
+	{# La documentation de Recaptcha préconise en effet d'intégrer ce fichier JS dans le head #}<script src="https://www.google.com/recaptcha/api.js" async defer> </script>
+{% endblock %}
 
 {% block body %}
-<div class="mx-5 adminselector p-2 my-5">
-    <h1>Veuillez-vous incrire</h1>
+	<main
+		class="mt-4">
+		<!--Container Main start-->
+		<div class="pb-5">
+			<div class="mx-4 my-4">
 
-    {{ form_start(form) }}
-        {{ form_row(form.email) }}
-        {{ form_row(form.name, {
+				<div class="bg w-100 p-5 text-white ">
+					<div class="">
+						<h1 class="text-white">Inscription</h1>
+					</div>
+					<div class="info">
+						<div class="mx-5">
+							<h3 class="text-white">50</h3>
+							<p>Inscrit</p>
+						</div>
+						<div class="mx-5">
+							<h3 class="text-white">23</h3>
+							<p>Exercices</p>
+						</div>
+						<div class="mx-5">
+							<h3 class="text-white">465</h3>
+							<p>Questions</p>
+						</div>
+					</div>
+					<div></div>
+				</div>
+			</div>
+		</main>
+		<div class="mx-5 adminselector p-2 my-5 w-50">
+        {% form_theme form 'bootstrap_5_layout.html.twig' %}
+			<h1 class="text-center p-2 bg-table ">Veuillez-vous incrire</h1>
+
+			{{ form_start(form) }}
+
+			{{ form_row(form.email) }}
+				{{ form_row(form.name, {
+
             label: 'Nom'
+
         }) }}
-        {{ form_row(form.firstname, {
+			{{ form_row(form.firstname, {
             label: 'Prénom'
         }) }}
-        {{ form_row(form.plainPassword, {
+			{{ form_row(form.plainPassword, {
             label: 'Mot de passe'
         }) }}
 
-        {# Affichage du captcha avec la clé publique récupéré #}
-            <div class="form-group">
-                <div class="g-recaptcha" data-sitekey="{{ google_recaptcha_site_key }}" data-theme="dark" data-size="normal"></div>
+			{# Affichage du captcha avec la clé publique récupéré #}
+			<div class="form-group">
+				<div class="g-recaptcha" data-sitekey="{{ google_recaptcha_site_key }}" data-theme="dark" data-size="normal"></div>
 
-                <div class="col-6 pt-2">
-                        {# Affichage des erreurs générales du formulaire et donc du Google Recaptcha #}
-                        {{ form_errors(form) }}                         
-                </div>
-            </div>			  
+				<div
+					class="col-6 pt-2">
+					{# Affichage des erreurs générales du formulaire et donc du Google Recaptcha #}
+					{{ form_errors(form) }}
+				</div>
+			</div>
 
-        <button type="submit"  class="btn btn-primary">S'inscrire !</button>
-    {{ form_end(form) }}
-</div>
-{% endblock %}
+			<button type="submit" class="btn btn-primary my-2">S'inscrire !</button>
+			{{ form_end(form) }}
+		</div>
+	{% endblock %}

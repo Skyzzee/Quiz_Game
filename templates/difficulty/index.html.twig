@@ -1,37 +1,90 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Difficulty index{% endblock %}
+{% block title %}Difficultées
+{% endblock %}
 
 {% block body %}
-    <h1>Difficulty index</h1>
+	<main
+		class="mt-4">
+		<!--Container Main start-->
+		<div class="pb-5">
+			<div class="mx-4 my-4">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Timer</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for difficulty in difficulties %}
-            <tr>
-                <td>{{ difficulty.id }}</td>
-                <td>{{ difficulty.name }}</td>
-                <td>{{ difficulty.timer }}</td>
-                <td>
-                    <a href="{{ path('app_difficulty_edit', {'id': difficulty.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">Pas de résultats</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+				<div class="bg w-100 p-5 text-white ">
+					<div class="">
+						<h1 class="text-white">Difficultées</h1>
+					</div>
+					<div class="info">
+						<div class="mx-5">
+							<h3 class="text-white">14</h3>
+							<p>Thèmes</p>
+						</div>
+						<div class="mx-5">
+							<h3 class="text-white">23</h3>
+							<p>Exercices</p>
+						</div>
+						<div class="mx-5">
+							<h3 class="text-white">465</h3>
+							<p>Questions</p>
+						</div>
+					</div>
+					<div></div>
+				</div>
+			</div>
 
-    <a href="{{ path('app_difficulty_new') }}" class="btn btn-primary">Ajouter une difficulté</a>
-    <a href="{{ path('app_main_quiz') }}" class="btn btn-primary">Retour à la création de quiz</a>
+
+			<div class="mx-4 selector">
+				<nav class="navbar navbar-expand-lg navbar-white ">
+					<div class="collapse navbar-collapse afficher " id="navbarNav">
+						<ul class="navbar-nav ">
+							<div class="svg-wrapper2 ">
+								<svg height="60" width="160" xmlns="http://www.w3.org/2000/svg">
+									<rect id="shape2" height="60" width="160"/>
+									<div id="text">
+										<a href="{{ path('app_category_index') }}">
+											<span class="spot"></span>Afficher tous les thèmes</a>
+									</div>
+								</svg>
+							</div>
+							<div class="svg-wrapper2 ">
+								<svg height="60" width="160" xmlns="http://www.w3.org/2000/svg">
+									<rect id="shape2" height="60" width="160"/>
+									<div id="text">
+										<a href="{{ path('app_exercise_index') }}">
+											<span class="spot"></span>Afficher tous les Exercices</a>
+									</div>
+								</svg>
+							</div>
+						</main>
+                        
+	<div class="mx-5 p-2 my-5">
+		<table class="table">
+			<thead class="bg-table">
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Timer</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for difficulty in difficulties %}
+					<tr>
+						<td>{{ difficulty.id }}</td>
+						<td>{{ difficulty.name }}</td>
+						<td>{{ difficulty.timer }}</td>
+						<td>
+							<a href="{{ path('app_difficulty_edit', {'id': difficulty.id}) }}">edit</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="4">Pas de résultats</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	<a href="{{ path('app_difficulty_new') }}" class="btn btn-primary">Ajouter une difficulté</a>
+	<a href="{{ path('app_main_quiz') }}" class="btn btn-primary">Retour à la création de quiz</a>
 {% endblock %}

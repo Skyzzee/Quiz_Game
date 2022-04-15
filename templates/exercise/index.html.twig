@@ -95,7 +95,8 @@
 									{% endfor %}
 								</tbody>
 							</table>
+
+							<a href="{{ path('app_exercise_new') }}" class="btn btn-primary">Ajouter un exercice</a>
+							<a href="{{ path('app_main_quiz') }}" class="btn btn-primary">Retour à la création de quiz</a>
 						</div>
-						<a href="{{ path('app_exercise_new') }}" class="btn btn-primary">Ajouter un exercice</a>
-						<a href="{{ path('app_main_quiz') }}" class="btn btn-primary">Retour à la création de quiz</a>
 					{% endblock %}

@@ -46,11 +46,15 @@ class ResultController extends AbstractController
             foreach($average as $notes){
             array_push($tableau, $notes['grades']);
             }
+            if (count($tableau) == 0) {
+                return;
+            } else {
             // fait la moyenne des notes
             foreach($tableau as $note){
             $somme =  $somme + $note;
             }
             return $moyenne=($somme / count($average));
+        }
         };
 
     //---------------------------------------------------------------------
